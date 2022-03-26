@@ -177,6 +177,12 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+         * Definied by user
+         */
+
+        \App\Providers\RepositoryServiceProvider::class
+
     ],
 
     /*
