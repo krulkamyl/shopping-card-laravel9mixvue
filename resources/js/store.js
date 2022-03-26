@@ -1,10 +1,14 @@
 export default {
     state: {
+        paginationIndex: 1,
         basket: {
             items: []
         }
     },
     mutations: {
+        setPaginationIndex(state, payload) {
+            state.paginationIndex = payload;
+        },
         addToBasket(state, payload) {
             state.basket.items.push(payload);
         },
@@ -16,10 +20,14 @@ export default {
         },
     },
     actions: {
+        setPaginationIndex(context, payload) {
+            context.commit('setPaginationIndex', payload);
+            localStorage.setItem('paginationIndex', payload);
+        },
         loadStoredState(context) {
-            const lastSearch = localStorage.getItem('lastSearch');
-            if (lastSearch) {
-                context.commit('setLastSearch', JSON.parse(lastSearch));
+            const paginationIndex = localStorage.getItem('paginationIndex');
+            if (paginationIndex) {
+                context.commit('setPaginationIndex', paginationIndex);
             }
 
             const basket = localStorage.getItem('basket');
