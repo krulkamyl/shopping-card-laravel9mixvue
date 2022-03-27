@@ -14,8 +14,8 @@
                 </div>
                 <div class="col-8">
                     <div class="text-end">
-                        <a class="btn btn-secondary" href="#" role="button">Edit</a>
-                        <a class="btn btn-danger" href="#" role="button">Remove</a>
+                        <router-link class="btn btn-secondary" :to="{name: 'product.view.edit', params: {'id': data.id }}" role="button">Edit</router-link>
+                        <button class="btn btn-danger" role="button" @click="removeProduct">Remove</button>
                     </div>
 
                     <h2>{{ data.name }}</h2>
@@ -74,6 +74,17 @@ export default {
         },
         removeFromBasket() {
             this.$store.dispatch("removeFromBasket", this.data.id);
+        },
+        removeProduct() {
+            if (confirm('Did you want delete this product?')) {
+                    let self = this;
+                    axios.delete(`/product/${this.data.id}`).then(
+                        response => {
+                            alert('Product was deleted!');
+                            this.$router.push({path: '/'});
+                        }
+                    );
+            }
         }
     },
     created() {

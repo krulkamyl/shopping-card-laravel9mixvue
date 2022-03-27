@@ -34,22 +34,14 @@
 
 <script>
     import {
-        mapState,
         mapGetters
     } from 'vuex';
 
     export default {
-        data() {
-            return {
-
-            };
-        },
         computed: {
             ...mapGetters({
                 itemsInBasket: 'itemsInBasket'
             })
         },
-        methods: {
-        }
     }
 </script>
