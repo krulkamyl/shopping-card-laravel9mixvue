@@ -16,7 +16,7 @@
                     <ul class="navbar-nav d-flex">
                         <li class="nav-item">
                             <router-link class="nav-link" :to="{name: 'basket'}">Basket
-                                <span v-if="itemsInBasket" class="badge badge-secondary">{{ itemsInBasket }}</span>
+                                <span v-if="itemsInBasket" class="badge bg-secondary">{{ itemsInBasket }}</span>
                             </router-link>
                         </li>
                     </ul>

@@ -34,7 +34,7 @@ class BaseRepository implements EloquentRepositoryInterface
 
     public function find(int $id): ?Model
     {
-        return $this->model->find($id);
+        return $this->model->findOrFail($id);
     }
 
     public function update(Model $model, array $data): Model

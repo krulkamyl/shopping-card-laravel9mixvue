@@ -10,10 +10,14 @@ export default {
             state.paginationIndex = payload;
         },
         addToBasket(state, payload) {
-            state.basket.items.push(payload);
+            if (state.basket.items.length < 3)
+                state.basket.items.push(payload);
+            else
+                alert('Basket can contain max 3 products')
         },
         removeFromBasket(state, payload)  {
-            state.basket.items = state.basket.items.filter(item => item.bookable.id !== payload);
+            console.log(payload);
+            state.basket.items = state.basket.items.filter(item => item.id !== payload);
         },
         setBasket(state, payload) {
             state.basket = payload;
@@ -50,9 +54,14 @@ export default {
                 ]
             });
             localStorage.setItem("basket", JSON.stringify(state.basket));
-        },
+        }
     },
     getters: {
         itemsInBasket: (state) => state.basket.items.length,
+        inBasketAlready(state) {
+            return function(id) {
+                return state.basket.items.reduce((result, item) => result || item.id === id, false)
+            }
+        }
     }
 }

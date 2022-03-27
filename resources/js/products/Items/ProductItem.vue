@@ -18,8 +18,8 @@ export default {
         VLazyImage
     },
     methods: {
-      redirectToRoute: function(item) {
-          console.log(item);
+      redirectToRoute: function(id) {
+          this.$router.push({path: '/product/'+id});
       }
     },
     props: {

@@ -39,9 +39,9 @@ class ProductController extends Controller
     {
         $data = $this->productRepository->create($request->validated());
         if ($data)
-            return response()->json([
-                $data,
-            ], 200);
+            return response()->json(
+                $data
+            , 200);
         else
             return response()->json([], 501);
     }
@@ -56,9 +56,9 @@ class ProductController extends Controller
     {
         $data = $this->productRepository->find($id);
         if ($data)
-            return response()->json([
-                $data,
-            ], 200);
+            return response()->json(
+                $data
+            , 200);
         else
             return response()->json([], 404);
     }
@@ -74,9 +74,9 @@ class ProductController extends Controller
     {
         $data = $this->productRepository->find($id);
         if ($data)
-            return response()->json([
-                $this->productRepository->update($data, $request->validated()),
-            ], 200);
+            return response()->json(
+                $this->productRepository->update($data, $request->validated())
+            , 200);
         else
             return response()->json([], 404);
     }
